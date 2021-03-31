@@ -1,0 +1,10 @@
+CLASES 1 Y 2 --> repaso JS
+CLASE 3 --> repaso MySQL
+CLASES 4 A 8 --> nodeJS
+CLASES 9 A 11 --> MongoDB + nodeJS
+CLASES 12 A 16 --> Angular (TypeScript) 
+CLASES 17 a 22 --> ReactJS
+Van a poder crear APPS multiplataforma node + angular/react (back + front)
+CLASES 23 y 24 --> AWS, servidores
+CLASE 25 --> tutoria para el proyecto
+
