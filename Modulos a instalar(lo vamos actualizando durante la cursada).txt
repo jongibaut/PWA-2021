@@ -1,0 +1,2 @@
+Modulos que vamos instalando:
+npm i axios (permite hacer solicituddes http)
