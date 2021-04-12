@@ -1,2 +1,7 @@
+NodeJS (instalo una sola vez global a la pc):
+npm i express -g
+npm i express-generator -g
+Para crear aplicacion en node:
+express nombreProyecto
 Modulos que vamos instalando:
 npm i axios (permite hacer solicituddes http)
