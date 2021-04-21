@@ -4,4 +4,10 @@ npm i express-generator -g
 Para crear aplicacion en node:
 express nombreProyecto
 Modulos que vamos instalando:
-npm i axios (permite hacer solicituddes http)
+npm i axios (permite hacer solicitudes http)
+npm i sha1 (encriptacion de passwords)
+npm i @hapi/joi (validaciones)
+npm i mysql (conexion con mysql)
+npm i knex (querys simplificadas de sql SQL query builder)
+npm i dotenv (variables de entorno)
+npm i jsonwebtoken (JWT tokens)
