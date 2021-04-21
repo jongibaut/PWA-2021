@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const model = require("./../models/categorias");
+const {validateCreate, validateModify} = require("../middlewares/categorias");
 
 const get = (req, res) => {
     model.getAll().then((response) => res.json(response)).catch((err) => res.status(500).json(err));
@@ -19,6 +20,6 @@ const modify = (req, res) => {
 
 router.get('/all', get);
 router.get('/single/:id', getSingle);
-router.post('/new', create);
-router.put('/modify/:id', modify);
+router.post('/new',validateCreate, create);
+router.put('/modify/:id',validateModify, modify);
 module.exports = router;

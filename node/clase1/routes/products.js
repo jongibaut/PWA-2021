@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const model = require("./../models/products");
+const {validateCreate, validateModify} = require('./../middlewares/products');
 // un getALL y un singles un alta de productos y un modificar productos
 
 const all = (req, res) => {
@@ -19,6 +20,6 @@ const modify = (req,res) => {
 }
 router.get('/all', all);
 router.get('/single/:id', single);
-router.post('/new', create);
-router.put('/modify/:id', modify)
+router.post('/new',validateCreate, create);
+router.put('/modify/:id',validateModify, modify)
 module.exports = router;
