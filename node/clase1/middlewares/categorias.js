@@ -1,7 +1,7 @@
 const schemas = require('./schemas/categorias');
 
 const validateCreate = (req, res, next) => {
-    const {error, value} = schemas.create.validate(req.body);
+    const {error} = schemas.create.validate(req.body);
     console.log(error);
     error ? res.status(422).json({message : error.details[0].message}) : next();
 

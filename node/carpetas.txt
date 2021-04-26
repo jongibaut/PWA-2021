@@ -1,0 +1,9 @@
+Modelo Vista Controlador
+BDD    front controllers || las routes recibe las peticiones del modelo y se las pasa al front
+
+Carpetas:
+Routes --> los controladores || rutas que nos va a conectar con el front
+Utils && Servicies --> Todo lo publico al programa (conexion a BDD servicies como multer nodemailer)
+node_modules --> modulos que vamos a ir instalando
+models --> peticiones a la BDD por tabla (normalmente cada archivo JS representa una tabla en mi BDD)
+middlewares --> interemediario entre envio de datos por el usuario y ejecucion de la funcion correspondiente en la route.
