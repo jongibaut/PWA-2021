@@ -3,10 +3,10 @@ const router = express.Router();
 const jwt = require('jsonwebtoken');
 const fs = require('fs');
 const sha1 = require('sha1');
-const publicKey = fs.readFileSync('./keys/public.pem');
-const signOptions = {expiresIn: "1h"};
+const privateKey = fs.readFileSync('./keys/private.pem');
+const signOptions = {algorithm: 'RS256', expiresIn: "2h"};
 const model = require('./../models/auth');
-const createToken = (payload) => jwt.sign(payload, publicKey, signOptions);
+const createToken = (payload) => jwt.sign(payload, privateKey, signOptions);
 
 const auth = async (req, res) => {
     try {

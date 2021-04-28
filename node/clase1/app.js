@@ -4,8 +4,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-//const dotenv = require("dotenv");
-//dotenv.config('./.env'); //antes que las rutas
+const dotenv = require("dotenv");
+dotenv.config();//antes que las rutas
 const {logeado} = require('./middlewares/logged')
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -17,6 +17,7 @@ const usuariosRouter = require('./routes/usuarios');
 const personas = require('./routes/personas');
 const auth = require('./routes/auth');
 const perfil = require('./routes/perfil');
+const registro = require('./routes/registro');
 
 var app = express();
 
@@ -40,6 +41,7 @@ app.use('/usuarios', usuariosRouter);
 app.use('/personas', personas);
 app.use('/auth', auth);
 app.use('/perfil',logeado, perfil);
+app.use('/registro', registro);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
