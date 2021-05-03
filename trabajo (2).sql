@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-04-2021 a las 16:52:47
+-- Tiempo de generación: 03-05-2021 a las 17:09:30
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.9
 
@@ -49,6 +49,52 @@ INSERT INTO `categorias` (`id`, `nombre`, `descripcion`, `habilitado`, `eliminad
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `empleados`
+--
+
+CREATE TABLE `empleados` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(255) COLLATE utf8mb4_spanish2_ci NOT NULL,
+  `apellido` varchar(255) COLLATE utf8mb4_spanish2_ci NOT NULL,
+  `habilitado` tinyint(4) NOT NULL DEFAULT 1,
+  `eliminado` tinyint(4) NOT NULL DEFAULT 0,
+  `ts_create` datetime NOT NULL DEFAULT current_timestamp(),
+  `ts_update` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `empleados`
+--
+
+INSERT INTO `empleados` (`id`, `nombre`, `apellido`, `habilitado`, `eliminado`, `ts_create`, `ts_update`) VALUES
+(6, 'Bob', 'Esponja', 1, 0, '2021-05-03 11:48:58', '2021-05-03 11:48:58');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `empleados_imagenes`
+--
+
+CREATE TABLE `empleados_imagenes` (
+  `id` int(11) NOT NULL,
+  `id_empleado` int(11) NOT NULL,
+  `uid` varchar(255) COLLATE utf8mb4_spanish2_ci NOT NULL,
+  `habilitado` tinyint(4) NOT NULL DEFAULT 1,
+  `eliminado` tinyint(4) NOT NULL DEFAULT 0,
+  `ts_create` datetime NOT NULL DEFAULT current_timestamp(),
+  `ts_update` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `empleados_imagenes`
+--
+
+INSERT INTO `empleados_imagenes` (`id`, `id_empleado`, `uid`, `habilitado`, `eliminado`, `ts_create`, `ts_update`) VALUES
+(1, 6, '63822fc8-102b-4918-99e4-84dbb0df2839', 1, 0, '2021-05-03 11:48:58', '2021-05-03 11:48:58');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `personas`
 --
 
@@ -72,7 +118,8 @@ INSERT INTO `personas` (`id`, `username`, `pass`, `mail`, `confirmacionCorreo`, 
 (1, 'jon2', '7c222fb2927d828af22f592134e8932480637c0d', '', 'fa3c95a1-b1ab-4aee-bb90-4747f3500e07', 1, 0, '2021-04-21 11:28:29', '2021-04-28 09:37:45'),
 (2, 'leomessi', '7c222fb2927d828af22f592134e8932480637c0d', '', 'e1b0e1e5-1a1b-4d4c-9af2-4d690ba2c679', 1, 0, '2021-04-21 11:40:38', '2021-04-28 09:38:05'),
 (3, 'jon', '7c222fb2927d828af22f592134e8932480637c0d', 'jongibaut@gmail.com', '1e4b6cf2-23ce-4af8-a70c-ae9d47a9cab8', 1, 0, '2021-04-28 10:11:35', '2021-04-28 11:46:19'),
-(4, 'jon3', '7c222fb2927d828af22f592134e8932480637c0d', 'jongibaut@gmail.com', 'f1595f8e-183f-4feb-97b7-138460979b24', 0, 0, '2021-04-28 11:21:25', '2021-04-28 11:21:25');
+(4, 'jon3', '7c222fb2927d828af22f592134e8932480637c0d', 'jongibaut@gmail.com', 'f1595f8e-183f-4feb-97b7-138460979b24', 0, 0, '2021-04-28 11:21:25', '2021-04-28 11:21:25'),
+(7, 'jon20', '7c222fb2927d828af22f592134e8932480637c0d', 'jongibaut@gmail.com', 'f2446cf5-ecb7-4e1f-ac7c-bc695d412a20', 1, 0, '2021-05-03 09:24:05', '2021-05-03 09:24:43');
 
 -- --------------------------------------------------------
 
@@ -141,6 +188,19 @@ ALTER TABLE `categorias`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `empleados`
+--
+ALTER TABLE `empleados`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `empleados_imagenes`
+--
+ALTER TABLE `empleados_imagenes`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_empleado` (`id_empleado`);
+
+--
 -- Indices de la tabla `personas`
 --
 ALTER TABLE `personas`
@@ -171,10 +231,22 @@ ALTER TABLE `categorias`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT de la tabla `empleados`
+--
+ALTER TABLE `empleados`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT de la tabla `empleados_imagenes`
+--
+ALTER TABLE `empleados_imagenes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT de la tabla `personas`
 --
 ALTER TABLE `personas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
@@ -191,6 +263,12 @@ ALTER TABLE `usuarios`
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `empleados_imagenes`
+--
+ALTER TABLE `empleados_imagenes`
+  ADD CONSTRAINT `empleados_imagenes_ibfk_1` FOREIGN KEY (`id_empleado`) REFERENCES `empleados` (`id`);
 
 --
 -- Filtros para la tabla `producto`
