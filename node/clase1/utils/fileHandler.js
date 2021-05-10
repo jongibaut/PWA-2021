@@ -14,12 +14,13 @@ const saveFile = (file, allowExtension, destFolder = "./public/images") => {
     // fs.createReadStream(path) -> read.on('data', chunk)  chunk --> las porciones que se van leyendo
     //fs.createWriteStream(dir) -> write.on('data', chunk)
     // con pipe conecto los buffers (elr ead y el write) y a cada chunk lo voy guardando en dir (la direccion de la imagen)
-    // el path es temporal entonce slo tengo que borrar
+    // el path es temporal entonces lo tengo que borrar
     fs.unlink(file[0].path, (e) => {
         if(e){
             throw "No se puede eliminar";
         }
     });
+    // unlink me borra el archivo temporal creado
     return uid;
 }
 catch(e){
