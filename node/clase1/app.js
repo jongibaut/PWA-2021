@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const cors = require('cors');
 
 const dotenv = require("dotenv");
 dotenv.config();//antes que las rutas
@@ -20,6 +21,7 @@ const perfil = require('./routes/perfil');
 const registro = require('./routes/registro');
 const empleados = require('./routes/empleados');
 
+
 var app = express();
 
 // view engine setup
@@ -31,6 +33,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cors());
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

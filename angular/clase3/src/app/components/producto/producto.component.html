@@ -1,0 +1,19 @@
+<div class="bg-dark" *ngIf="loaded; else loading">
+    <div class="container">
+        <div class="row align-items-center" style="height: 100vh;">
+            <div class="col-4">
+                <div class="card mt-4" style="width: 18rem;">
+                    <div class="card-body">
+                      <h5 class="card-title">{{producto.nombre}}</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">Precio : {{producto.precio}}</h6>
+                      <h6 class="card-subtitle mb-2 text-muted">Stock : {{producto.stock}}</h6>
+                    </div>
+                  </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <ng-template #loading>
+        <app-loading value="producto {{producto.nombre}}"></app-loading>
+    </ng-template>
+    

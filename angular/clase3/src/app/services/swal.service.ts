@@ -13,5 +13,4 @@ export class SwalService {
       timer: timer || 3000
     })
   }
-
 }

@@ -1,1 +1,27 @@
-<p>registro works!</p>
+<div class="container-fluid m-0 bg-dark" *ngIf= 'loaded ; else loading'>
+    <div class="row justify-content-center align-items-center altura">
+        <div class="col-4">
+            <form action="" [formGroup]="form" (ngSubmit) = "register()">
+                <div class="form-group mt-4">
+                    <label for="username" class = "text-white mb-1">Usuario <span class = "text-danger">*</span> </label><span class="text-danger">{{verifyInput("username")}}</span>
+                <input id="username" type="text" class="form-control" formControlName = 'username'>
+                
+            </div>
+            <div class="form-group mt-4">
+                <label for="pass" class = "text-white mb-1">Password <span class = "text-danger">*</span> </label><span class="text-danger">{{verifyInput("pass")}}</span>
+                <input id = "pass" type="password" class="form-control" formControlName = 'pass'>
+                
+            </div>
+            <div class="form-group mt-4">
+                <label for="mail" class = "text-white mb-1">Mail <span class = "text-danger">*</span> </label><span class="text-danger">{{verifyInput("mail")}}</span>
+                <input id = "mail" type="mail" class="form-control" formControlName = 'mail'>
+                
+            </div>
+            <button [disabled] = 'form.invalid' class="btn btn-info mt-4 col-12 text-white">Registrate</button>
+            </form>
+        </div>
+    </div>
+</div>
+<ng-template #loading>
+    <app-loading value="registro"></app-loading>
+</ng-template>

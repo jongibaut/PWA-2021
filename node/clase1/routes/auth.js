@@ -17,8 +17,8 @@ const auth = async (req, res) => {
         // consulta de BDD me devuelve un RowDataPacket ([{}])
         // ! Negado, !user (si no hya usuario) !user.habilitado (si no esta habilitado)
         if (!user) res.sendStatus(401);
-        if(!user.habilitado) res.send("verifique su mail!!");
-        if(user.habilitado) {
+        else if(!user.habilitado) res.send("verifique su mail!!");
+        else if(user.habilitado) {
             const token = createToken({id: user.id});
             console.log(token);
             res.status(200).json({JWT : token, info: user});

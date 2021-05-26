@@ -1,10 +1,10 @@
-<div class="container-fluid m-0 bg-dark">
+<div class="container-fluid m-0 bg-dark" *ngIf = "loaded; else loading">
     <div class="row justify-content-center align-items-center altura">
         <div class="col-4">
             <form action="" [formGroup]="form" (ngSubmit) = "login()">
                 <div class="form-group mt-4">
-                    <label for="username" class = "text-white mb-1">Usuario <span class = "text-danger">*</span> </label><span class="text-danger">{{verifyInput("usuario")}}</span>
-                <input id="username" type="text" class="form-control" formControlName = 'usuario'>
+                    <label for="username" class = "text-white mb-1">Usuario <span class = "text-danger">*</span> </label><span class="text-danger">{{verifyInput("username")}}</span>
+                <input id="username" type="text" class="form-control" formControlName = 'username'>
                 
             </div>
             <div class="form-group mt-4">
@@ -17,3 +17,6 @@
         </div>
     </div>
 </div>
+<ng-template #loading>
+    <app-loading value="login"></app-loading>
+</ng-template>
