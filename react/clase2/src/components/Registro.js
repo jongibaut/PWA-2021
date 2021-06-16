@@ -3,7 +3,7 @@ import Error from './Error';
 const shortid = require('shortid');
 
 const Registro = ({agregarUsuarios}) => {
-    const[usuario, setUsuario] = useState({
+    const[usuario, setUsuario] = useState({ //objeto usuario (lo que ingreso en el form)
         nombre: '', 
         apellido: '',
         departamento: '',

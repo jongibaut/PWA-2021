@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Listado = ({ usuarios }) => {
+const Listado = ({usuarios}) => {
     console.log(usuarios);
     return ( 
         <>

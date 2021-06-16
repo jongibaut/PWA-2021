@@ -4,7 +4,7 @@ import Registro from './components/Registro';
 import Listado from './components/Listado';
 import './App.css';
 const App = () => {
-  const [usuarios, setUsuarios] = useState([]);
+  const [usuarios, setUsuarios] = useState([]); //array de varios objetos usuario
   const agregarUsuarios = (usuario) => {
     setUsuarios([...usuarios,usuario]);
   }
