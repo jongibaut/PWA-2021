@@ -3,6 +3,7 @@ import useCustomForm from './../utils/useCustomForm';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import { usePost } from '../utils/useHTTP';
 const schema = yup.object().shape({
     nombre: yup.string().required("nombre es obligatorio").min(3, "el nombre no puede ser mas corto que 3 caracteres").max(30, "el nombre no puede ser mas largo que 30 caracteres"),
     apellido: yup.string().required("apellido es obligatorio").max(30, "el apellido no puede ser mas largo que 30 caracteres"),
@@ -16,6 +17,7 @@ const Register = () => {
     });
     const registro = () => {
         console.log("Registrado 😎", values);
+        const [result, error] = usePost(`http://localhost:3001/register`, values)
     }
     return (
         <>

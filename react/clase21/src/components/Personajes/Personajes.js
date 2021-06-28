@@ -1,5 +1,5 @@
 import React from 'react';
-import useGet from './../../utils/useHTTP'
+import {useGet} from './../../utils/useHTTP'
 const Personajes = () => {
     const [personajes, error] = useGet({ url: 'https://rickandmortyapi.com/api/character' });
     return (

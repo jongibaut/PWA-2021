@@ -16,7 +16,7 @@ const useGet = ({url, params = {}, initialState = []}) => {
             } 
         }
         get();
-    }, [url]);
+    }, [url, params]);
     return [data, error];
 
 }
@@ -32,4 +32,4 @@ const usePost = async(url, obj) => {
     return [data,error] 
 }
 
-export default useGet;
+export {useGet, usePost};
