@@ -5,18 +5,28 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { Form, Col, Container, Row } from 'react-bootstrap';
 import { usePost } from '../utils/useHTTP';
+import { useState } from "react";
+import axios from "axios"; //npm i axios
 const schema = yup.object().shape({
     username: yup.string().required("username es obligatorio"),
     pass: yup.string().required("pass es obligatorio"),
 })
 const Login = () => {
     const [values, handlerInput] = useCustomForm();
+    const [result, setResult] = useState({});
+    const [error, setError] = useState(false);
+    //const [result, error, post] = usePost(`http://localhost:3001/auth`, values);
 
     const { register, handleSubmit } = useForm({
         resolver: yupResolver(schema)
     });
     const login = async() => {
-        const [result,error] = usePost(`http://localhost:3001/auth`,values)
+        try {
+            setResult(await axios.post(`http://localhost:9000/auth`, values));
+            console.log(result.data);
+        } catch (err) {
+            setError(true);
+        }
     }
     return (
         <>

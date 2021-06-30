@@ -11,13 +11,16 @@ const schema = yup.object().shape({
 })
 const Register = () => {
     const [values, handlerInput] = useCustomForm();
+    const [result, error, post] = usePost(`http://localhost:3001/register`, values)
 
     const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: yupResolver(schema)
     });
     const registro = () => {
         console.log("Registrado 😎", values);
-        const [result, error] = usePost(`http://localhost:3001/register`, values)
+        post();
+        console.log(result, error);
+
     }
     return (
         <>
